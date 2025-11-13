@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sarthak Wankhede</title>
+    <style>
+      /* --- Base Page Styling --- */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* --- Fade-in + Smooth Animation --- */
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animate {
+        opacity: 0;
+        animation: fadeUp 1s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.4s;
+      }
+      .delay-2 {
+        animation-delay: 0.8s;
+      }
+      .delay-3 {
+        animation-delay: 1.2s;
+      }
+      .delay-4 {
+        animation-delay: 1.6s;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        animation: fadeIn 1.5s ease forwards;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.05);
+        animation: zoomIn 6s ease forwards;
+      }
+
+      @keyframes zoomIn {
+        0% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* --- Overlay Section --- */
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+        padding: 25px 20px;
+        color: #fff;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 0.6s;
+      }
+
+      .overlay h1 {
+        margin: 0;
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+
+      .overlay p {
+        margin: 6px 0;
+        color: #ddd;
+        font-size: 0.95rem;
+      }
+
+      .company {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+
+      .company .logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #ffcc00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-weight: 700;
+      }
+
+      /* --- Action Buttons --- */
+      .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 25px 0 50px;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 1.4s;
+      }
+
+      .icon {
+        display: inline-flex;
+        width: 60px;
+        height: 60px;
+        text-decoration: none;
+        font-size: 25px;
+        outline: 2px solid white;
+        border-radius: 50%;
+        transition-property: outline-offset, outline-color, background-color,
+          transform;
+        transition-duration: 0.25s;
+        color: white;
+      }
+
+      .icon:hover {
+        outline-offset: 4px;
+        transform: scale(1.05);
+      }
+
+      .icon svg {
+        margin: auto;
+        width: 30px;
+      }
+
+      .icon-instagram:hover {
+        background-color: #e1306c;
+        outline-color: #e1306c;
+      }
+
+      .icon-phone:hover {
+        background-color: #4caf50;
+        outline-color: #4caf50;
+      }
+
+      /* --- About Section (Collapsible) --- */
+      .about {
+        background: #fff;
+        color: #000;
+        border-radius: 12px;
+        margin: 20px auto;
+        padding: 25px;
+        max-width: 400px;
+        text-align: center;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 1.6s;
+      }
+
+      .about h2 {
+        font-size: 1.3rem;
+        margin: 0;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+        padding: 10px 20px;
+        border-radius: 8px;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .about h2:hover {
+        background: #333;
+      }
+
+      .about-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.6s ease, opacity 0.6s ease;
+        opacity: 0;
+      }
+
+      .about-content.open {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      .about-content p {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-top: 15px;
+      }
+
+      /* --- Contact Section --- */
+      .contact {
+        background: #fff;
+        color: #000;
+        border-radius: 12px;
+        margin: 20px auto 50px;
+        padding: 25px;
+        max-width: 400px;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 2s;
+      }
+
+      .contact .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .contact .header .icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact p {
+        margin: 10px 0;
+        font-size: 0.95rem;
+      }
+
+      .contact small {
+        display: block;
+        color: #666;
+        font-size: 0.85rem;
+        margin-top: 5px;
+      }
+
+      .direction-btn {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .direction-btn:hover {
+        background: #222;
+      }
+
+      /* --- Responsive --- */
+      @media (max-width: 480px) {
+        .overlay h1 {
+          font-size: 1.5rem;
+        }
+        .overlay p {
+          font-size: 0.9rem;
+        }
+        .container {
+          gap: 22px;
+        }
+        .about,
+        .contact {
+          margin: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hero Section -->
+    <div class="hero">
+      <img src="image\IMG_20251113_152333.jpg" alt="sarthak Wankhede" />
+      <div class="overlay animate delay-1">
+        <h1>sarthak Wankhede</h1>
+        <p>coder (Frontend development)</p>
+
+        <!-- Buttons -->
+        <div class="container animate delay-2">
+          <a
+            href="https://www.instagram.com/_sar__wa_/"
+            target="_blank"
+            class="icon icon-instagram"
+            title="Instagram"
+          >
+            <svg
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+            >
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+              ></path>
+            </svg>
+          </a>
+
+          <a href="tel:+91 98332 61451" class="icon icon-phone">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1v3.61a1 1 0 0 1-1 1A17.91 17.91 0 0 1 2 6a1 1 0 0 1 1-1h3.61a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.24 1.01l-2.32 2.2z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about animate delay-3">
+      <h2 id="aboutToggle">About Me</h2>
+      <div class="about-content" id="aboutContent">
+        <p>
+          Sarthak Wankhede — A creative Web Developer who turns ideas into
+          clean, fast, and easy-to-use digital experiences. I focus on smooth
+          design, simple functionality, and building websites that people
+          genuinely enjoy using it.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact animate delay-4">
+      <div class="header">
+        <div class="icon">📞</div>
+        <span>Contact Us</span>
+      </div>
+      <p><strong>Call Us</strong><br /><small>+91 98332 61451</small></p>
+      <p>
+        <strong>Email</strong><br /><small
+          >wankhedesarthak924@example.com</small
+        >
+      </p>
+      <p>
+        <strong>Address</strong><br /><small
+          >198/7806/A wing,<br />vikhroli court, vikhroli, Mumbai<br />India</small
+        >
+      </p>
+      <a
+        href="https://www.google.com/maps?q=19.1164409,72.9369661"
+        target="_blank"
+        class="direction-btn"
+      >
+        ➤ Direction
+      </a>
+    </div>
+
+    <script>
+      // Toggle About Me section open/close
+      const toggleBtn = document.getElementById("aboutToggle");
+      const content = document.getElementById("aboutContent");
+
+      toggleBtn.addEventListener("click", () => {
+        content.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
